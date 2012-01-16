@@ -1,0 +1,28 @@
+.group
+  =f.label :ip
+  =f.error_message_on :ip
+  =f.text_field :ip, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :user
+  =f.error_message_on :user
+  =f.text_field :user, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :password
+  =f.error_message_on :password
+  =f.text_field :password, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :datastore
+  =f.error_message_on :datastore
+  =f.text_field :datastore, :class => :text_field
+  %span.description Ex: a simple text
+
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:esx_hosts, :index)}';return false", :class => :button

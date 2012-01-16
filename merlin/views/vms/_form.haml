@@ -1,0 +1,72 @@
+.group
+  =f.label :name
+  =f.error_message_on :name
+  =f.text_field :name, :class => :text_field
+
+.group
+  =f.label :os_type
+  =f.error_message_on :os_type
+  =f.text_field :os_type, :class => :text_field
+  %span.description Find all supported os types here: http://pubs.vmware.com/vsphere-50/index.jsp?topic=/com.vmware.wssdk.apiref.doc_50/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+
+.group
+  =f.label :size
+  =f.error_message_on :size
+  =f.text_field :size, :class => :text_field
+  %span.description Disk size in MB
+
+.group
+  =f.label :memory
+  =f.error_message_on :memory
+  =f.text_field :memory, :class => :text_field
+  %span.description Memory in MB
+
+.group
+  =f.label :cpus
+  =f.error_message_on :cpus
+  =f.text_field :cpus, :class => :text_field
+  %span.description Number of CPUs
+  
+.group
+  =f.label :networks
+  =f.error_message_on :networks
+  =f.text_field :networks, :class => :text_field
+  %span.description List of comma separated networks that the NICS will connect to. First network must be the Pxe one. Ex: pxenet1, net2, net3
+
+.group
+  =f.label :lease_name
+  =f.error_message_on :lease_name
+  =f.text_field :lease_name, :class => :text_field
+  %span.description Name used to create DHCP lease
+
+.group
+  =f.label :ip
+  =f.error_message_on :ip
+  =f.text_field :ip, :class => :text_field
+  %span.description IP used by the VM
+
+.group
+  =f.label :mask
+  =f.error_message_on :mask
+  =f.text_field :mask, :class => :text_field
+  %span.description Netmask used by the VM
+
+.group
+  =f.label :pxe_path
+  =f.error_message_on :pxe_path
+  =f.text_field :pxe_path, :class => :text_field
+  %span.description PXE path
+
+.group
+  =f.label :dhcp_host
+  =f.error_message_on :dhcp_host
+  =f.select :dhcp_host_id, :collection => @dhcp_hosts, :fields => [:ip, :id]
+
+.group
+  =f.label :esx_host
+  =f.error_message_on :esx_host
+  =f.select :esx_host_id, :collection => @esx_hosts, :fields => [:ip, :id]
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:vms, :index)}';return false", :class => :button

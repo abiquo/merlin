@@ -1,0 +1,12 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:dhcp_hosts, :index)
+      %li.active=link_to pat(:new), url(:dhcp_hosts, :new)
+  .content
+    %h2.title
+      =pat(:new)
+      =mt(:dhcp_hosts)
+    .inner
+      -form_for :dhcp_hosts, url(:dhcp_hosts, :create), :class => :form do |f|
+        =partial "dhcp_hosts/form", :locals => { :f => f }

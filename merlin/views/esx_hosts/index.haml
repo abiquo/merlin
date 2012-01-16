@@ -1,0 +1,31 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:esx_hosts, :index)
+      %li=link_to pat(:new), url(:esx_hosts, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:esx_hosts)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:esx_hosts, :id)
+          %th=mat(:esx_hosts, :ip)
+          %th=mat(:esx_hosts, :user)
+          %th=mat(:esx_hosts, :password)
+          %th=mat(:esx_hosts, :datastore)
+          %th.last="&nbsp;"
+        -@esx_hosts.each do |esx_hosts|
+          %tr
+            %td.first=esx_hosts.id
+            %td=esx_hosts.ip
+            %td=esx_hosts.user
+            %td=esx_hosts.password
+            %td=esx_hosts.datastore
+            %td.last
+              =button_to pat(:edit), url(:esx_hosts, :edit, :id => esx_hosts.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:esx_hosts, :destroy, :id => esx_hosts.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"

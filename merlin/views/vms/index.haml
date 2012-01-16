@@ -1,0 +1,54 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:vms, :index)
+      %li=link_to pat(:new), url(:vms, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:vms)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:vms, :id)
+          %th=mat(:vms, :name)
+          %th=mat(:vms, :os_type)
+          %th=mat(:vms, :size)
+          %th=mat(:vms, :memory)
+          %th=mat(:vms, :networks)
+          %th=mat(:vms, :lease_name)
+          %th=mat(:vms, :ip)
+          %th=mat(:vms, :mask)
+          %th=mat(:vms, :pxe_path)
+          %th=mat(:vms, :cpus)
+          %th=mat(:vms, :dhcp_host_id)
+          %th=mat(:vms, :esx_host_id)
+          %th=mat(:vms, :deployed)
+          %th.last="&nbsp;"
+        -@vms.each do |vms|
+          %tr
+            %td.first=vms.id
+            %td=vms.name
+            %td=vms.os_type
+            %td=vms.size
+            %td=vms.memory
+            %td=vms.networks
+            %td=vms.lease_name
+            %td=vms.ip
+            %td=vms.mask
+            %td=vms.pxe_path
+            %td=vms.cpus
+            %td=if DhcpHosts.where(:id => vms.dhcp_host_id).first then DhcpHosts.where(:id => vms.dhcp_host_id).first.ip else 'none' end
+            %td=if EsxHosts.where(:id => vms.esx_host_id).first then EsxHosts.where(:id => vms.esx_host_id).first.ip else 'none' end
+            %td=vms.deployed
+            %td.last
+              =button_to pat(:edit), url(:vms, :edit, :id => vms.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:vms, :destroy, :id => vms.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+              ="|"
+              =button_to pat(:deploy), url(:vms, :deploy, :id => vms.id), :method => :post, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+              ="|"
+              =button_to pat(:undeploy), url(:vms, :undeploy, :id => vms.id), :method => :post, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+
+      .actions-bar.wat-cf
+        .actions="&nbsp;"

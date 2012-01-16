@@ -1,0 +1,12 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:vms, :index)
+      %li.active=link_to pat(:new), url(:vms, :new)
+  .content
+    %h2.title
+      =pat(:new)
+      =mt(:vms)
+    .inner
+      -form_for :vms, url(:vms, :create), :class => :form do |f|
+        =partial "vms/form", :locals => { :f => f }

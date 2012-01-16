@@ -1,0 +1,16 @@
+.group
+  =f.label :ip
+  =f.error_message_on :ip
+  =f.text_field :ip, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :port
+  =f.error_message_on :port
+  =f.text_field :port, :class => :text_field
+  %span.description Ex: a simple text
+
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:dhcp_hosts, :index)}';return false", :class => :button

@@ -1,0 +1,13 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:esx_hosts, :index)
+      %li=link_to pat(:new), url(:esx_hosts, :new)
+      %li.active=link_to pat(:edit), url(:esx_hosts, :edit, :id => @esx_hosts.id)
+  .content
+    %h2.title
+      =pat(:edit)
+      =mt(:esx_hosts)
+    .inner
+      -form_for :esx_hosts, url(:esx_hosts, :update, :id => @esx_hosts.id), :method => :put, :class => :form do |f|
+        =partial "esx_hosts/form", :locals => { :f => f }

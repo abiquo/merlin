@@ -1,7 +1,7 @@
 Merlin
 =======================
 
-Merlin is a webapp used for deploy VM on ESXi and perform PXE installations
+Merlin is a webaap tool for deploying VMs on ESXi and performing PXE installations
 
 See wiki for more info
 

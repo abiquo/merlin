@@ -1,9 +1,24 @@
 Merlin
 =======================
 
-Merlin is a webaap tool for deploying VMs on ESXi and performing PXE installations
+Merlin is a webapp tool for deploying VMs on ESXi and performing PXE installations
 
 See wiki for more info
+
+Getting started
+----------------
+
+Bootstrap the DB
+
+    padrino rake ar:migrate
+
+Create an admin user
+
+    padrino rake seed 
+
+Start the app
+
+    padrino start
 
 Note on patches/pull requests
 -----------------------------
